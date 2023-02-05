@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Hybrid Sample</title>
+    </head>
+    <body onload="showToast('hello')">
+        <input type="button" value="Toast" onclick="showToast('Hello World!')" />
+        <script type="text/javascript">
+            function showToast(text) {
+                JeepChief.showToast(text);
+            }
+
+            function showAlert(text) {
+                alert(text);
+            }
+        </script>
+    </body>
+</html>
