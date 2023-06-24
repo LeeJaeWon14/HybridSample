@@ -1,25 +1,24 @@
 package com.jeepchief.hybridsample
 
 import android.graphics.Bitmap
-import android.util.Log
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
 
 class MyWebViewClient : WebViewClient() {
-    companion object val TAG = "Hybrid"
     override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
-        Log.e(TAG, "shouldOverrideUrlLoading()")
+        Log.e("shouldOverrideUrlLoading()\n${view?.url}")
         return super.shouldOverrideUrlLoading(view, request)
     }
 
     override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
-        Log.e(TAG, "onPageStarted()")
+        Log.e("onPageStarted()\n$url")
         super.onPageStarted(view, url, favicon)
     }
 
     override fun onPageFinished(view: WebView?, url: String?) {
-        Log.e(TAG, "onPageFinished()")
+        Log.e("onPageFinished()\n$url")
         super.onPageFinished(view, url)
+        view?.loadUrl("javascript:JeepChief.getHtml(document.getElementsByTagName('body')[0].innerHTML);")
     }
 }
